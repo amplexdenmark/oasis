@@ -498,7 +498,7 @@ defmodule Mix.Oasis.Router do
     map = update_in(map[:parsers], &(parsers ++ &1))
 
     if :json in parsers do
-      Map.put(map, :json_decoder, Jason)
+      Map.put(map, :json_decoder, JSON)
     else
       map
     end

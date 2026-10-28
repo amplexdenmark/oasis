@@ -1499,7 +1499,7 @@ defmodule Mix.OasisTest do
 
     assert is_binary(router.plug_parsers)
     assert router.plug_parsers =~ "parsers: [:json]"
-    assert router.plug_parsers =~ "json_decoder: Jason"
+    assert router.plug_parsers =~ "json_decoder: JSON"
   end
 
   test "Mix.Oasis.new/2 maps request-body media ranges to Plug parser configuration" do
@@ -1535,7 +1535,7 @@ defmodule Mix.OasisTest do
           refute router.plug_parsers =~ inspect(parser)
         end
 
-        assert (router.plug_parsers =~ "json_decoder: Jason") == json_decoder?
+        assert (router.plug_parsers =~ "json_decoder: JSON") == json_decoder?
       end
     end
   end
@@ -1558,7 +1558,7 @@ defmodule Mix.OasisTest do
     assert router.plug_parsers =~ ":json"
     assert router.plug_parsers =~ ":multipart"
     assert router.plug_parsers =~ ":urlencoded"
-    assert router.plug_parsers =~ "json_decoder: Jason"
+    assert router.plug_parsers =~ "json_decoder: JSON"
   end
 
   test "Mix.Oasis.new/2 with multipart request body" do

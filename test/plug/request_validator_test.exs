@@ -168,7 +168,7 @@ defmodule Oasis.Plug.RequestValidatorTest do
     end
 
     test "keeps a standard Plug.Parsers primitive wrapper when raw provenance is unavailable" do
-      parser_opts = Plug.Parsers.init(parsers: [:json], pass: ["*/*"], json_decoder: Jason)
+      parser_opts = Plug.Parsers.init(parsers: [:json], pass: ["*/*"], json_decoder: JSON)
       schema = Oasis.Test.JSONSchema.compile!(%{"type" => "integer"})
       body_schema = %{"content" => %{"application/json" => %{"schema" => schema}}}
 
@@ -189,7 +189,7 @@ defmodule Oasis.Plug.RequestValidatorTest do
         Plug.Parsers.init(
           parsers: [:json],
           pass: ["*/*"],
-          json_decoder: Jason,
+          json_decoder: JSON,
           body_reader: {Oasis.CacheRawBodyReader, :read_body, []}
         )
 
@@ -207,7 +207,7 @@ defmodule Oasis.Plug.RequestValidatorTest do
     end
 
     test "fails closed when an empty parsed object has no raw-body provenance" do
-      parser_opts = Plug.Parsers.init(parsers: [:json], pass: ["*/*"], json_decoder: Jason)
+      parser_opts = Plug.Parsers.init(parsers: [:json], pass: ["*/*"], json_decoder: JSON)
       body_schema = %{"content" => %{"application/json" => %{"schema" => Oasis.Test.JSONSchema.compile!(false)}}}
 
       conn =
@@ -234,7 +234,7 @@ defmodule Oasis.Plug.RequestValidatorTest do
         Plug.Parsers.init(
           parsers: [:json],
           pass: ["*/*"],
-          json_decoder: Jason,
+          json_decoder: JSON,
           body_reader: {Oasis.CacheRawBodyReader, :read_body, []}
         )
 

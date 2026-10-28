@@ -38,7 +38,7 @@ defmodule Oasis.Plug.RequestValidator do
       plug Plug.Parsers,
         parsers: [:json],
         pass: ["*/*"],
-        json_decoder: Jason,
+        json_decoder: JSON,
         body_reader: {Oasis.CacheRawBodyReader, :read_body, []}
 
       plug Oasis.Plug.RequestValidator, body_schema: body_schema

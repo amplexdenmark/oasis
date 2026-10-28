@@ -153,7 +153,7 @@ defmodule Oasis.Gen.PrePostTestHMAC do
   plug(
     Plug.Parsers,
     parsers: [:json],
-    json_decoder: Jason,
+    json_decoder: JSON,
     pass: ["*/*"],
     body_reader: {Oasis.CacheRawBodyReader, :read_body, []}
   )
